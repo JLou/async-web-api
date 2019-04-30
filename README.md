@@ -17,6 +17,9 @@ On va d'abord taper l'api synchrone en exécutant :
 
 On lance 60 requetes, avec un timeout a 10s pour ne pas se faire jeter instantément.
 
+On relance le test, et après quelques secondes, dans Visual Studio on pause le debug
+et on ouvre les outils Threads et Parallel Stacks. On observe un grand nombre de threads lockés.
+
 ## Test en Asynchrone
 
 On tape l'api asynchrone comme ça :
@@ -24,6 +27,8 @@ On tape l'api asynchrone comme ça :
 λ bombardier.exe -n 60 -t 10s https://localhost:44326/api/async
 ```
 
+On relance le test, et on pause après quelques secondes, on affiche a nouveau les Threads et Parallel Stacks.
+Le nombre de threads  devrait etre très faible (voire 1).
 
 On peut constater la différence entre le synchrone et l'async :
 ![synchrone=25s avg, async = 3.5s avg](./results.png)
